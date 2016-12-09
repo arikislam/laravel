@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 
 Route::get('articels','ArticelController@index');
+Route::get('articels/create','ArticelController@create');
+
 
 Route::get('articels/{id}','ArticelController@show');
+Route::post('articels','ArticelController@store');
+
 
