@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('articels','ArticelController@index');
+
+Route::get('articels/{id}','ArticelController@show');
+
