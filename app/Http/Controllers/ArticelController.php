@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 //use Illuminate\Http\Request;
 use App\Articel;
 use Carbon\Carbon;
+use Auth;
+use App\User;
 
 use App\Http\Requests\CreateArticelRequest;
 
@@ -13,6 +15,7 @@ class ArticelController extends Controller
 {
  		public function index()
  		{
+ 			//return Auth::user();
  			$articels= Articel::latest('published_at')->published()->get();
  			return view('articels.index',compact('articels'));
  		}
@@ -20,7 +23,7 @@ class ArticelController extends Controller
  		public function show($id)
  		{
  			 $articel= Articel::findOrFail($id);
- 	        return view('articels.show' , compact('articel'));
+ 	        return view('articels.show',compact('articel'));
  		
  		}
 
@@ -31,11 +34,16 @@ class ArticelController extends Controller
  		
  		
  		public function store(CreateArticelRequest $request)
- 		{	
- 			
- 		
- 			 Articel::insert($request->only('title', 'body','published_at'));
- 		     return redirect('articels');
+ 		{		
+ 				// $input=$request->only('title' , 'body', 'published_at' );
+
+ 				// $input['user_id']=Auth::user()->id;
+ 			 //    Articel::insert($input);
+ 			 
+ 			/// $article = new Article($request->only('title', 'body','published_at'));
+ 			$articel = new Articel($request->all());
+ 			 Auth::user()->articels()->save($articel);
+ 			    return redirect('articels');
  		}
 
  		public function edit($id)

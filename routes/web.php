@@ -26,3 +26,7 @@ Route::get('/', function () {
 
 Route::resource('articels', 'ArticelController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

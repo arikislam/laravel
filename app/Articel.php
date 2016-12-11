@@ -15,6 +15,11 @@ class Articel extends Model
     	$query->where('published_at','<=',Carbon::now());
     }
 
+    public function users()
+    {
+    	return $this->belongsTo('App\User');
+    }
+
 
     
 }
