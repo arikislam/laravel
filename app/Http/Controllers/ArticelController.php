@@ -6,18 +6,19 @@ namespace App\Http\Controllers;
 use App\Articel;
 use Carbon\Carbon;
 use Auth;
-use App\User;
+
 
 use App\Http\Requests\CreateArticelRequest;
 
 
 class ArticelController extends Controller
 {
+	
  		public function index()
  		{
  			//return Auth::user();
  			$articels= Articel::latest('published_at')->published()->get();
- 			return view('articels.index',compact('articels'));
+ 			   return view('articels.index',compact('articels'));
  		}
 
  		public function show($id)

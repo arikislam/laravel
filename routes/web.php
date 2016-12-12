@@ -24,9 +24,23 @@ Route::get('/', function () {
 // Route::get('articels/{id}','ArticelController@show');
 // Route::post('articels','ArticelController@store');
 
-Route::resource('articels', 'ArticelController');
 
 
-Auth::routes();
+
+//Auth::routes();
+
+Route::get('/login', 'AuthController@index');
+
+
+
+
+
+Route::post('/login','AuthController@authenticate');
+Route::get('/logout','AuthController@logout');
+Route::get('/register','AuthController@register');
+Route::post('/register','AuthController@registerUser');
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('articels', 'ArticelController');
+
