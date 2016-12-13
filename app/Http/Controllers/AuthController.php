@@ -8,8 +8,11 @@ use App\User;
 
 class AuthController extends Controller
 {
+		public function __construct()
+	    {
+	        $this->middleware('guest',['except' => ['logout']]);
+	    }
 
-		
     	public function index()
     	{
 
@@ -18,7 +21,7 @@ class AuthController extends Controller
     	}
 
 	    public function authenticate(Request $request)
-		    {
+		 {
 		    		$email =$request['email'];
 		    		$password=$request['password'];
 
@@ -31,7 +34,7 @@ class AuthController extends Controller
 		        {
 		        	return view('auth.login');
 		        }
-		    }
+		 }
 
 		 public function logout()
 		 {
@@ -49,7 +52,7 @@ class AuthController extends Controller
         {
 		        $this->validate($request,[
 		            'name' => 'required|max:255',
-		            'email' => 'required|email',
+		            'email' => 'required|email|max:255|unique:users',
 		            'password' => 'required']
 		            );
 

@@ -16,10 +16,12 @@ class Custom
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user())
+        if(Auth::user()->check())
         {
-                return $next($request);
-        } return redirect('/login');
+          return $next($request);
+        } 
+        
+        return redirect('/login');
       
     }
 }

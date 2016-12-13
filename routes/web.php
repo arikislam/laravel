@@ -29,6 +29,11 @@ Route::get('/', function () {
 
 //Auth::routes();
 
+Route::get('/centerinfo/login','CenterAuthController@index');
+Route::Post('/centerinfo/login','CenterAuthController@authenticate');
+Route::get('/centerinfo/logout','CenterAuthController@logout');
+
+
 Route::get('/login', 'AuthController@index');
 
 

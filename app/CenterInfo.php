@@ -5,9 +5,10 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class CenterInfo extends Authenticatable
 {
-    use Notifiable;
+   
+
     protected $table = 'center_info';
     protected $primaryKey = 'id';
     /**
@@ -20,4 +21,10 @@ class User extends Authenticatable
 
 
 
+
+    public function getAuthPassword()
+    {
+        return $this->inst_pass;
+
+    }
 }
