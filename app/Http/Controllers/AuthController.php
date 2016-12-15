@@ -20,6 +20,9 @@ class AuthController extends Controller
 
     	}
 
+
+    	
+
 	    public function authenticate(Request $request)
 		 {
 		    		$email =$request['email'];
@@ -27,6 +30,7 @@ class AuthController extends Controller
 
 		        if (Auth::attempt(['email' => $email, 'password' => $password])) 
 		        {
+		        	return Auth::user();
 		            // Authentication passed...
 		            return redirect()->intended('articels');
 		        }

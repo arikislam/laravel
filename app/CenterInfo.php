@@ -5,8 +5,10 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class CenterInfo extends Authenticatable
 {
+    use Notifiable;
    
 
     protected $table = 'center_info';

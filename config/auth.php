@@ -50,7 +50,7 @@ return [
 
         'center_info' => [
             'driver' => 'session',
-            'provider' => 'center_info',
+            'provider' =>'center_info',
         ],
     ],
 
